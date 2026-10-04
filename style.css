@@ -302,3 +302,30 @@ header.site.brand .wordmark {
   padding-top: 1.25rem;
   border-top: 1px solid var(--rule);
 }
+
+/* Privacy you can check: a two-column ledger of what reaches us. */
+.privacy h3 {
+  font-size: 1.05rem;
+  margin: 1.75rem 0 0.4rem;
+}
+
+.reach {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  margin: 1rem 0 0;
+}
+
+
+.reach dt,
+.reach dd {
+  margin: 0;
+  padding: 0.55rem 0;
+  border-top: 1px solid var(--rule);
+}
+
+.reach dt { font-weight: 600; padding-right: 1.25rem; }
+
+.reach dt:nth-last-of-type(1),
+.reach dd:last-of-type {
+  border-bottom: 1px solid var(--rule);
+}
