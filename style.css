@@ -333,6 +333,13 @@ header.site.brand .wordmark {
 /* Real words from testers, used with their permission. */
 .quote {
   margin: 2.5rem 0 0;
+}
+
+.quote + .quote {
+  margin-top: 1.25rem;
+}
+
+.quote {
   padding: 0 0 0 1.1rem;
   border-left: 3px solid var(--rule);
 }
