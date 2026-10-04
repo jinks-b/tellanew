@@ -4,55 +4,89 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Tell Anew: a video journal that stays on your phone</title>
-<meta name="description" content="Talk to your camera instead of typing. Entries are transcribed on your iPhone, titled automatically, and searchable like text. Nothing leaves your phone.">
+<meta name="description" content="Talk to your camera instead of typing. Entries are transcribed on your iPhone, and searching one word takes you to the second you said it. Nothing goes to us.">
 <link rel="stylesheet" href="/style.css">
 <link rel="icon" href="/icon.png">
 <link rel="apple-touch-icon" href="/icon.png">
 </head>
 <body>
 
-<header class="site">
+<header class="site brand">
   <img src="/icon.png" alt="">
   <p class="wordmark">Tell Anew</p>
-  <p class="tagline">Talk it out. Private by design.</p>
 </header>
 
 <main>
 
-<h1>A journal you talk to.</h1>
+<section class="hero">
+  <h1>Talk it out. Find any moment later.</h1>
 
-<p class="lede">Journaling by typing asks you to compose. Journaling by talking
-just asks you to show up.</p>
+  <p class="lede">Your video journal, transcribed on your iPhone. Nothing goes
+  to us.</p>
 
-<p>Tell Anew records short video entries, transcribes them on your iPhone, and
-titles them from what you actually said. Later you can search everything you have
-ever recorded the way you would search a notes app, tap any word, and jump to
-that exact second in the video.</p>
+  <div class="loop">
+    <video autoplay muted loop playsinline preload="auto" width="480" height="1044"
+           poster="/v/search-loop.jpg"
+           aria-label="The word adult typed into search. Tapping the result opens the entry at the second it was said, with the transcript below.">
+      <source src="/v/search-loop.mp4" type="video/mp4">
+    </video>
+    <img src="/v/search-loop.jpg" width="480" height="1044" alt="An entry open at the sentence that was searched for, with its transcript below.">
+  </div>
 
-<ul class="points">
-  <li><strong>Nothing leaves your phone.</strong> No account, no server, no
-    analytics. It works in airplane mode.</li>
-  <li><strong>Transcripts are free, on every entry, kept forever.</strong>
-    Transcription runs on the device itself.</li>
-  <li><strong>Your entries are yours whether or not you pay.</strong> Viewing,
-    playing, exporting and deleting always work.</li>
-  <li><strong>Time capsules.</strong> Seal an entry with a date and it comes
-    back on the day you chose.</li>
-</ul>
+  <p><a class="button" href="https://forms.gle/TJY4weZ5dwdiCNKb9">Join the beta</a></p>
+  <p class="fine">Free while it's in TestFlight. Coming to the App Store. If you
+  journal, or you have tried to and it never stuck, the beta is for you.</p>
+</section>
 
-<h2>Coming to the App Store</h2>
+<section class="intro">
+  <h2>Watch the 40-second intro</h2>
+  <video controls playsinline preload="none" width="720" height="1280"
+         poster="/v/intro.jpg">
+    <source src="/v/intro.mp4" type="video/mp4">
+    <track kind="captions" src="/v/intro.vtt" srclang="en" label="English">
+  </video>
+</section>
 
-<p>Tell Anew is in private beta on TestFlight. If you journal, or you have tried
-to and it never stuck, that is exactly who the beta is for.</p>
+<section>
+  <h2>See how it works</h2>
+  <ul class="tiles">
+    <li><a href="/how-it-works#interview"><img src="/how-it-works/v/interview.jpg" alt="" loading="lazy" width="720" height="1280">Let it ask you</a></li>
+    <li><a href="/how-it-works#photo"><img src="/how-it-works/v/photo.jpg" alt="" loading="lazy" width="720" height="1280">Talk over a photo</a></li>
+    <li><a href="/how-it-works#search"><img src="/how-it-works/v/search.jpg" alt="" loading="lazy" width="720" height="1280">Find the exact second</a></li>
+  </ul>
+  <p><a href="/how-it-works">All six short videos</a></p>
+</section>
+
+<section>
+  <h2>A journal you talk to</h2>
+
+  <p>Journaling by typing asks you to compose. Journaling by talking just asks
+  you to show up. Tell Anew records short video entries, transcribes them on
+  your iPhone, and titles them from what you actually said.</p>
+
+  <ul class="points">
+    <li><strong>Nothing goes to us.</strong> No account, no server, no
+      analytics, and it works in airplane mode. Backup goes only to your own
+      iCloud, if you turn it on.</li>
+    <li><strong>Transcripts are free, on every entry, kept forever.</strong>
+      Transcription runs on the device itself.</li>
+    <li><strong>Your entries are yours whether or not you pay.</strong> Viewing,
+      playing, exporting and deleting always work.</li>
+    <li><strong>Time capsules.</strong> Seal an entry with a date and it comes
+      back on the day you chose.</li>
+  </ul>
+</section>
 
 <hr>
 
 </main>
 
 <footer>
-  <p><a href="/privacy">Privacy policy</a> &nbsp;·&nbsp;
+  <p><a href="/how-it-works">How it works</a> &nbsp;·&nbsp;
+     <a href="/privacy">Privacy policy</a> &nbsp;·&nbsp;
      <a href="/support">Support</a></p>
-  <p>This site sets no cookies and runs no scripts.</p>
+  <p>This site sets no cookies and runs no scripts. The voice in the intro is
+  generated. The app screens are real.</p>
 </footer>
 
 </body>

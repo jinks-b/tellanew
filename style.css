@@ -8,6 +8,7 @@
   --ink-soft: #57524a;
   --rule: #e3ddd2;
   --link: #2f5d8a;
+  --bezel: #1c1a17;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -17,6 +18,7 @@
     --ink-soft: #a29a8d;
     --rule: #302d28;
     --link: #8fb6dd;
+    --bezel: #45403a;
   }
 }
 
@@ -129,4 +131,174 @@ footer a { color: var(--ink-soft); }
 
 .points li:last-child {
   border-bottom: 1px solid var(--rule);
+}
+
+/* How it works: one short video per feature, shown at phone size. */
+.toc {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.1rem;
+  margin: 1.5rem 0 0.5rem;
+  font-size: 0.95rem;
+}
+
+.feature {
+  padding-top: 1rem;
+  scroll-margin-top: 1rem;
+}
+
+.feature video {
+  display: block;
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  aspect-ratio: 9 / 16;
+  border-radius: 14px;
+  background: var(--rule);
+  margin: 1rem 0 0.5rem;
+}
+
+/* Home page. The loop plays on its own, silently; anyone who asks their
+   device for less motion gets the still instead. No script involved. */
+header.site.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding-bottom: 1.5rem;
+}
+
+header.site.brand img {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+}
+
+header.site.brand .wordmark {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.hero h1 {
+  font-size: 2.2rem;
+}
+
+.loop {
+  width: 100%;
+  max-width: 240px;
+  margin: 1.75rem 0 1.5rem;
+}
+
+.loop video,
+.loop img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 480 / 1044;
+  border-radius: 30px;
+  border: 6px solid var(--bezel);
+  background: var(--rule);
+}
+
+.loop img { display: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .loop video { display: none; }
+  .loop img { display: block; }
+}
+
+.button {
+  display: inline-block;
+  background: var(--ink);
+  color: var(--paper);
+  font-weight: 650;
+  text-decoration: none;
+  border-radius: 999px;
+  padding: 0.7rem 1.6rem;
+}
+
+.button:hover,
+.button:focus-visible {
+  opacity: 0.85;
+}
+
+.fine {
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+}
+
+.intro video {
+  display: block;
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  aspect-ratio: 9 / 16;
+  border-radius: 14px;
+  background: var(--rule);
+  margin: 0.75rem 0 0.5rem;
+}
+
+.tiles {
+  list-style: none;
+  padding: 0;
+  margin: 0.75rem 0 1rem;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.tiles a {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 600;
+  line-height: 1.3;
+  text-decoration: none;
+}
+
+.tiles img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 9 / 16;
+  object-fit: cover;
+  border-radius: 10px;
+  background: var(--rule);
+  margin-bottom: 0.4rem;
+}
+
+/* How it works, grouped by moment: two videos side by side where they fit. */
+.group {
+  padding-top: 0.5rem;
+  scroll-margin-top: 1rem;
+}
+
+.group h3 {
+  font-size: 1.05rem;
+  margin: 1rem 0 0.4rem;
+}
+
+.pair {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .pair { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (min-width: 640px) {
+  /* Line the two videos up even when one description runs longer. */
+  .pair .feature {
+    display: grid;
+    grid-template-rows: subgrid;
+    grid-row: span 3;
+    align-content: start;
+  }
+}
+
+.group > h2 {
+  font-size: 1.35rem;
+  margin-top: 3rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--rule);
 }
