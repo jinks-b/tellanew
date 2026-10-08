@@ -52,6 +52,8 @@ header.site {
   padding: 3rem 0 2rem;
 }
 
+header.site picture { display: block; flex: 0 0 auto; }
+
 header.site img {
   width: 68px;
   height: 68px;
