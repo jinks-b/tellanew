@@ -361,7 +361,7 @@ header.site.brand .wordmark {
   font-size: 0.9rem;
 }
 
-/* ---- Prototype: moving pictures (not live) ----
+/* ---- Moving pictures ----
    Each feature shows six silent seconds of its own video, looping. The full
    video with sound sits one tap away in <details>. No script involved:
    anyone who asks their device for less motion gets the still instead. */
@@ -504,7 +504,7 @@ main.wide :is(h1, h2, p, dl, figure, ul.points) { max-width: 36rem; }
   .feature .full video { max-width: none; }
 }
 
-/* ---- Prototype: drawn marks, defined sections, the rabbit (not live) ----
+/* ---- Drawn marks, defined sections, the rabbit ----
    The pen voice from the videos, on the page itself. DESIGN.md rule 10 gives
    paper-craft to marketing; rule 11's doodle register: the rest state is the
    finished drawing, and motion is only added on top. */
