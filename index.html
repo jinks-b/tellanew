@@ -6,6 +6,8 @@
 <title>Tell Anew: a video journal that stays on your phone</title>
 <meta name="description" content="Talk to your camera instead of typing. Entries are transcribed on your iPhone, and searching one word takes you to the second you said it. Nothing goes to us.">
 <link rel="stylesheet" href="/style.css">
+<link rel="preload" as="image" href="/art/rabbit-lift.png">
+<link rel="preload" as="image" href="/art/rabbit-hold.png">
 <link rel="icon" href="/icon.png">
 <link rel="apple-touch-icon" href="/icon.png">
 </head>
@@ -16,10 +18,10 @@
   <p class="wordmark">Tell Anew</p>
 </header>
 
-<main>
+<main class="wide">
 
 <section class="hero">
-  <h1>Talk it out. Find any moment later.</h1>
+  <h1>Talk it out. Find <span class="ink-circle">any moment</span> later.</h1>
 
   <p class="lede">Your video journal, transcribed on your iPhone. Nothing goes
   to us.</p>
@@ -33,7 +35,7 @@
     <img src="/v/search-loop.jpg" width="480" height="1044" alt="An entry open at the sentence that was searched for, with its transcript below.">
   </div>
 
-  <p><a class="button" href="https://forms.gle/TJY4weZ5dwdiCNKb9">Join the beta</a></p>
+  <p class="cta"><a class="button" href="https://forms.gle/TJY4weZ5dwdiCNKb9">Join the beta</a><span class="rabbit" aria-hidden="true"></span></p>
   <p class="fine">Free while it's in TestFlight. Coming to the App Store. If you
   journal, or you have tried to and it never stuck, the beta is for you.</p>
 </section>
@@ -54,8 +56,8 @@
   <figcaption>A beta tester</figcaption>
 </figure>
 
-<section class="intro">
-  <h2>Watch the 40-second intro</h2>
+<section class="intro part">
+  <div class="sect-head"><svg class="doodle" viewBox="0 0 48 48" aria-hidden="true"><path pathLength="1" d="M38.6 23.7C38.5 24.5 38.2 27.3 37.8 28.9C37.4 30.5 37.0 32.1 36.3 33.4C35.5 34.6 34.6 35.6 33.4 36.4C32.1 37.1 30.4 37.6 28.7 37.9C27.1 38.3 25.1 38.4 23.5 38.5C21.9 38.5 20.4 38.4 19.0 38.1C17.7 37.8 16.6 37.4 15.5 36.6C14.4 35.8 13.3 34.6 12.4 33.3C11.4 32.0 10.3 30.3 9.6 28.7C9.0 27.0 8.4 25.1 8.5 23.5C8.5 21.9 9.0 20.3 9.6 18.9C10.3 17.5 11.4 16.4 12.4 15.3C13.3 14.2 14.4 13.3 15.5 12.4C16.6 11.5 17.7 10.7 19.0 10.1C20.4 9.5 21.9 9.0 23.5 8.8C25.1 8.6 27.1 8.7 28.8 9.2C30.4 9.7 32.1 10.5 33.4 11.6C34.6 12.6 35.5 14.1 36.3 15.5C37.0 16.9 37.4 18.5 37.8 19.9C38.2 21.4 38.5 23.5 38.7 24.2C38.8 24.9 38.7 24.2 38.7 24.2"/><path pathLength="1" d="M19.6 16.6C20.4 17.0 22.9 18.2 24.5 19.1C26.0 20.1 27.9 21.2 28.7 22.3C29.6 23.3 30.1 24.5 29.5 25.4C28.8 26.3 26.3 27.1 25.0 27.9C23.6 28.6 22.1 30.0 21.3 29.9C20.6 29.8 20.7 28.5 20.5 27.3C20.4 26.2 20.4 24.4 20.3 23.0C20.1 21.5 19.7 19.8 19.6 18.9C19.5 17.9 19.5 17.7 19.5 17.5"/></svg><h2>Watch the 40-second intro</h2></div>
   <video controls playsinline preload="none" width="720" height="1280"
          poster="/v/intro.jpg">
     <source src="/v/intro.mp4" type="video/mp4">
@@ -63,35 +65,40 @@
   </video>
 </section>
 
-<section>
-  <h2>See how it works</h2>
+<section class="part">
+  <div class="sect-head"><svg class="doodle" viewBox="0 0 48 48" aria-hidden="true"><path pathLength="1" d="M31.5 20.3C31.3 21.0 31.0 23.2 30.4 24.4C29.7 25.6 28.6 26.6 27.6 27.4C26.6 28.2 25.4 28.8 24.3 29.1C23.2 29.5 22.1 29.6 21.0 29.5C19.9 29.4 18.8 29.2 17.7 28.8C16.6 28.4 15.4 27.8 14.4 27.0C13.4 26.3 12.3 25.3 11.6 24.2C11.0 23.2 10.5 21.8 10.5 20.5C10.4 19.2 10.8 17.7 11.4 16.4C12.0 15.1 13.1 13.7 14.2 12.7C15.2 11.6 16.5 10.7 17.7 10.2C18.9 9.7 20.1 9.5 21.2 9.6C22.4 9.7 23.4 10.2 24.5 10.8C25.5 11.5 26.6 12.4 27.5 13.4C28.5 14.4 29.5 15.6 30.1 16.7C30.8 17.8 31.2 19.6 31.4 20.1C31.6 20.7 31.4 20.1 31.4 20.1"/><path pathLength="1" d="M28.0 27.8C28.6 28.3 30.4 29.7 31.7 30.7C33.0 31.7 34.6 32.8 35.9 34.0C37.2 35.1 38.8 37.2 39.4 37.9"/></svg><h2>See how it works</h2></div>
   <ul class="tiles">
-    <li><a href="/how-it-works#interview"><img src="/how-it-works/v/interview.jpg" alt="" loading="lazy" width="720" height="1280">Let it ask you</a></li>
-    <li><a href="/how-it-works#photo"><img src="/how-it-works/v/photo.jpg" alt="" loading="lazy" width="720" height="1280">Talk over a photo</a></li>
-    <li><a href="/how-it-works#search"><img src="/how-it-works/v/search.jpg" alt="" loading="lazy" width="720" height="1280">Find the exact second</a></li>
+    <li><a href="/how-it-works#search"><span class="clip"><video autoplay muted loop playsinline width="360" height="640" poster="/how-it-works/loops/search.jpg" aria-hidden="true"><source src="/how-it-works/loops/search.mp4" type="video/mp4"></video><img src="/how-it-works/loops/search.jpg" width="360" height="640" alt="" loading="lazy"></span>Find the exact second</a></li>
+    <li><a href="/how-it-works#interview"><span class="clip"><video autoplay muted loop playsinline width="360" height="640" poster="/how-it-works/loops/interview.jpg" aria-hidden="true"><source src="/how-it-works/loops/interview.mp4" type="video/mp4"></video><img src="/how-it-works/loops/interview.jpg" width="360" height="640" alt="" loading="lazy"></span>Let it ask you</a></li>
+    <li><a href="/how-it-works#photo"><span class="clip"><video autoplay muted loop playsinline width="360" height="640" poster="/how-it-works/loops/photo.jpg" aria-hidden="true"><source src="/how-it-works/loops/photo.mp4" type="video/mp4"></video><img src="/how-it-works/loops/photo.jpg" width="360" height="640" alt="" loading="lazy"></span>Talk over a photo</a></li>
+    <li><a href="/how-it-works#check-in"><span class="clip"><video autoplay muted loop playsinline width="360" height="640" poster="/how-it-works/loops/check-in.jpg" aria-hidden="true"><source src="/how-it-works/loops/check-in.mp4" type="video/mp4"></video><img src="/how-it-works/loops/check-in.jpg" width="360" height="640" alt="" loading="lazy"></span>Check in</a></li>
+    <li><a href="/how-it-works#mark"><span class="clip"><video autoplay muted loop playsinline width="360" height="640" poster="/how-it-works/loops/mark.jpg" aria-hidden="true"><source src="/how-it-works/loops/mark.mp4" type="video/mp4"></video><img src="/how-it-works/loops/mark.jpg" width="360" height="640" alt="" loading="lazy"></span>Mark a moment</a></li>
+    <li><a href="/how-it-works#month"><span class="clip"><video autoplay muted loop playsinline width="360" height="640" poster="/how-it-works/loops/month.jpg" aria-hidden="true"><source src="/how-it-works/loops/month.mp4" type="video/mp4"></video><img src="/how-it-works/loops/month.jpg" width="360" height="640" alt="" loading="lazy"></span>Your month, played back</a></li>
   </ul>
-  <p><a href="/how-it-works">All six short videos</a></p>
+  <p><a href="/how-it-works">All 20 short videos</a></p>
 </section>
 
-<section>
-  <h2>A journal you talk to</h2>
+<section class="part">
+  <div class="sect-head"><svg class="doodle" viewBox="0 0 48 48" aria-hidden="true"><path pathLength="1" d="M33.9 8.6C34.6 8.8 37.2 8.9 38.3 9.6C39.5 10.4 40.5 11.7 40.9 13.1C41.3 14.5 40.9 16.3 40.9 18.0C40.8 19.7 40.5 21.6 40.5 23.2C40.4 24.8 41.0 26.3 40.8 27.5C40.6 28.7 40.3 29.8 39.4 30.6C38.6 31.4 37.2 32.0 35.8 32.3C34.3 32.7 32.4 32.6 30.7 32.8C29.0 33.0 27.3 33.2 25.8 33.4C24.2 33.5 23.0 33.6 21.6 33.5C20.3 33.5 19.0 33.3 17.6 33.1C16.1 32.9 14.4 32.9 13.0 32.5C11.5 32.0 9.9 31.3 8.8 30.4C7.7 29.5 6.9 28.4 6.6 27.2C6.3 25.9 6.8 24.5 6.9 23.0C7.1 21.5 7.4 19.8 7.5 18.2C7.7 16.6 7.5 14.8 7.8 13.4C8.2 12.0 8.9 10.6 9.8 9.8C10.7 9.0 12.0 8.6 13.5 8.5C14.9 8.3 16.9 8.7 18.6 8.9C20.3 9.0 22.2 9.3 23.8 9.4C25.3 9.5 26.8 9.6 28.1 9.5C29.5 9.5 31.2 9.2 32.1 9.1C33.0 9.0 33.3 8.9 33.5 8.9"/><path pathLength="1" d="M16.3 32.6C15.9 33.4 14.2 36.1 13.8 37.3C13.4 38.6 13.1 40.1 13.8 40.2C14.5 40.3 16.7 38.8 18.1 38.0C19.5 37.1 21.1 36.0 22.1 35.2C23.1 34.4 24.0 33.4 24.3 33.1"/><path pathLength="1" d="M14.4 18.5C15.1 18.5 17.0 18.6 18.4 18.5C19.8 18.4 21.1 18.1 22.7 18.0C24.3 17.8 26.1 17.6 27.8 17.5C29.5 17.4 31.9 17.5 33.0 17.6C34.1 17.6 34.3 17.7 34.5 17.7"/><path pathLength="1" d="M14.5 24.5C15.1 24.5 17.1 24.4 18.5 24.3C19.9 24.1 21.2 23.8 22.8 23.7C24.4 23.6 27.1 23.5 27.9 23.5"/></svg><h2>A journal you talk to</h2></div>
 
   <p>Journaling by typing asks you to compose. Journaling by talking just asks
   you to show up. Tell Anew records short video entries, transcribes them on
   your iPhone, and titles them from what you actually said.</p>
 
   <ul class="points">
-    <li><strong>Transcripts are free, on every entry, kept forever.</strong>
-      Transcription runs on the device itself.</li>
-    <li><strong>Your entries are yours whether or not you pay.</strong> Viewing,
-      playing, exporting and deleting always work.</li>
-    <li><strong>Time capsules.</strong> Seal an entry with a date and it comes
-      back on the day you chose.</li>
+    <li><span class="clip mini"><video autoplay muted loop playsinline width="360" height="640" poster="/how-it-works/loops/words.jpg" aria-hidden="true"><source src="/how-it-works/loops/words.mp4" type="video/mp4"></video><img src="/how-it-works/loops/words.jpg" width="360" height="640" alt="" loading="lazy"></span><p><strong>Transcripts are free, on every entry, kept forever.</strong>
+      Transcription runs on the device itself.</p></li>
+    <li><span class="clip mini"><video autoplay muted loop playsinline width="360" height="640" poster="/how-it-works/loops/export.jpg" aria-hidden="true"><source src="/how-it-works/loops/export.mp4" type="video/mp4"></video><img src="/how-it-works/loops/export.jpg" width="360" height="640" alt="" loading="lazy"></span><p><strong>Your entries are yours whether or not you pay.</strong> Viewing,
+      playing, exporting and deleting always work.</p></li>
+    <li><span class="clip mini"><video autoplay muted loop playsinline width="360" height="640" poster="/how-it-works/loops/capsule.jpg" aria-hidden="true"><source src="/how-it-works/loops/capsule.mp4" type="video/mp4"></video><img src="/how-it-works/loops/capsule.jpg" width="360" height="640" alt="" loading="lazy"></span><p><strong>Time capsules.</strong> Seal an entry with a date and it comes
+      back on the day you chose.</p></li>
   </ul>
 </section>
 
-<section class="privacy" id="privacy">
-  <h2>What reaches us: nothing</h2>
+<section class="privacy part" id="privacy">
+  <div class="sect-head"><svg class="doodle" viewBox="0 0 48 48" aria-hidden="true"><path pathLength="1" d="M34.3 20.7C34.6 20.8 35.6 20.8 36.1 21.1C36.7 21.3 37.1 21.6 37.3 22.3C37.5 23.0 37.5 23.8 37.4 25.1C37.3 26.5 36.8 28.7 36.7 30.5C36.5 32.3 36.5 34.5 36.5 35.9C36.5 37.2 36.7 38.0 36.6 38.7C36.5 39.4 36.1 39.7 35.8 39.9C35.4 40.2 35.3 40.3 34.3 40.2C33.4 40.2 31.5 39.8 29.9 39.7C28.3 39.5 26.4 39.4 24.7 39.5C23.0 39.5 21.2 39.7 19.6 39.8C18.1 40.0 16.4 40.3 15.4 40.4C14.3 40.5 13.6 40.5 13.1 40.3C12.5 40.1 12.2 39.7 11.9 39.2C11.7 38.7 11.7 38.6 11.5 37.4C11.4 36.2 11.3 33.8 11.2 32.0C11.0 30.2 10.6 28.2 10.5 26.7C10.4 25.2 10.4 23.9 10.6 23.0C10.8 22.2 11.2 22.0 11.6 21.7C12.1 21.3 12.4 21.1 13.4 21.1C14.4 21.0 16.1 21.4 17.6 21.4C19.0 21.5 20.7 21.6 22.1 21.5C23.5 21.4 24.6 21.2 26.0 21.0C27.4 20.9 29.1 20.6 30.4 20.5C31.7 20.4 33.2 20.5 33.8 20.5"/><path pathLength="1" d="M15.5 21.5C15.6 21.0 15.8 19.4 16.4 18.4C16.9 17.5 17.7 16.4 18.6 15.6C19.4 14.7 20.5 14.0 21.5 13.4C22.4 12.9 23.5 12.6 24.4 12.5C25.4 12.5 26.3 12.7 27.1 13.1C27.9 13.5 28.6 14.2 29.2 15.0C29.9 15.9 30.4 16.9 30.9 18.0C31.3 19.1 31.6 20.9 31.8 21.4"/><path pathLength="1" d="M24.5 28.5C24.5 29.3 24.3 32.4 24.2 33.1"/></svg><h2>What reaches us: nothing</h2></div>
+  <div class="reach-row">
+  <span class="clip side"><video autoplay muted loop playsinline width="360" height="640" poster="/how-it-works/loops/private.jpg" aria-hidden="true"><source src="/how-it-works/loops/private.mp4" type="video/mp4"></video><img src="/how-it-works/loops/private.jpg" width="360" height="640" alt="" loading="lazy"></span>
   <dl class="reach">
     <dt>Your videos</dt><dd>Stay on your phone.</dd>
     <dt>Transcripts</dt><dd>Made on your phone.</dd>
@@ -99,6 +106,7 @@
     <dt>Analytics</dt><dd>None, in the app or on this site.</dd>
     <dt>Backup</dt><dd>Only to your own iCloud, and only if you turn it on.</dd>
   </dl>
+  </div>
 
   <h3>Check it yourself</h3>
   <ul>
@@ -124,6 +132,7 @@
 </main>
 
 <footer>
+  <p class="signoff"><span class="rabbit still" aria-hidden="true"></span></p>
   <p><a href="/how-it-works">How it works</a> &nbsp;·&nbsp;
      <a href="/privacy">Privacy policy</a> &nbsp;·&nbsp;
      <a href="/support">Support</a> &nbsp;·&nbsp;

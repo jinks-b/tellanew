@@ -9,6 +9,8 @@
   --rule: #e3ddd2;
   --link: #2f5d8a;
   --bezel: #1c1a17;
+  --sheet: #fffdf8;
+  --ruled: rgba(120, 150, 190, 0.26);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -19,6 +21,8 @@
     --rule: #302d28;
     --link: #8fb6dd;
     --bezel: #45403a;
+    --sheet: #1f1d1a;
+    --ruled: rgba(143, 182, 221, 0.13);
   }
 }
 
@@ -356,3 +360,291 @@ header.site.brand .wordmark {
   color: var(--ink-soft);
   font-size: 0.9rem;
 }
+
+/* ---- Prototype: moving pictures (not live) ----
+   Each feature shows six silent seconds of its own video, looping. The full
+   video with sound sits one tap away in <details>. No script involved:
+   anyone who asks their device for less motion gets the still instead. */
+
+main.wide { max-width: 72rem; }
+
+body:has(main.wide) header.site,
+body:has(main.wide) footer { max-width: 72rem; }
+
+main.wide :is(h1, h2, p, dl, figure, ul.points) { max-width: 36rem; }
+
+.clip {
+  display: block;
+  position: relative;
+}
+
+.clip video,
+.clip img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 9 / 16;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 1px solid var(--rule);
+  background: var(--rule);
+  margin: 0;
+}
+
+.clip img { display: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .clip video { display: none; }
+  .clip img { display: block; }
+}
+
+/* Home: six moving tiles under "See how it works". */
+.tiles { grid-template-columns: repeat(3, minmax(0, 1fr)); max-width: none; }
+.tiles .clip { margin-bottom: 0.45rem; }
+
+/* Home: a small moving picture beside each point. */
+.points li {
+  display: grid;
+  grid-template-columns: 4.5rem minmax(0, 1fr);
+  gap: 1rem;
+  align-items: start;
+}
+.points li p { margin: 0; }
+.clip.mini video, .clip.mini img { border-radius: 8px; }
+
+.reach-row { display: block; }
+.reach-row .clip.side { display: none; }
+
+/* How it works: shelves of moving cards. */
+.shelf {
+  display: grid;
+  gap: 2rem;
+  margin-top: 1.25rem;
+}
+
+.feature {
+  display: grid;
+  grid-template-columns: 8rem minmax(0, 1fr);
+  grid-template-areas: "clip words" "clip full";
+  grid-template-rows: auto 1fr;
+  gap: 0.25rem 1.1rem;
+  align-items: start;
+  align-content: start;
+  padding-top: 0;
+}
+.feature .clip { grid-area: clip; }
+.feature .words { grid-area: words; }
+.feature .words h3 { margin: 0 0 0.3rem; }
+.feature .words p { font-size: 0.95rem; line-height: 1.55; margin: 0; }
+.feature .full { grid-area: full; }
+
+.full summary {
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--link);
+  padding: 0.35rem 0;
+  list-style: none;
+}
+.full summary::-webkit-details-marker { display: none; }
+.full summary::before { content: "▶\FE0E"; font-size: 0.7em; margin-right: 0.45em; vertical-align: 0.1em; }
+.full[open] summary::before { content: "■\FE0E"; }
+.full summary span { color: var(--ink-soft); font-weight: 400; margin-left: 0.3em; }
+
+.feature .full video {
+  display: block;
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  aspect-ratio: 9 / 16;
+  border-radius: 14px;
+  background: var(--rule);
+  margin: 0.5rem 0 0;
+}
+
+/* Watching with sound replaces the silent loop rather than doubling it. */
+.feature:has(.full[open]) {
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-areas: "words" "full";
+}
+.feature:has(.full[open]) .clip { display: none; }
+
+@media (min-width: 760px) {
+  .hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 16rem;
+    column-gap: 4rem;
+    align-items: start;
+  }
+  .hero > * { grid-column: 1; }
+  .hero .loop { grid-column: 2; grid-row: 1 / span 6; margin: 0; max-width: none; }
+  .hero h1 { font-size: 3rem; line-height: 1.1; margin-top: 2.5rem; }
+
+  .tiles { grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 1rem; }
+
+  .reach-row {
+    display: grid;
+    grid-template-columns: minmax(0, 36rem) 9rem;
+    gap: 3rem;
+    align-items: start;
+  }
+  .reach-row .clip.side { display: block; grid-column: 2; grid-row: 1; }
+
+  .shelf {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 2.25rem 1.5rem;
+  }
+  .feature,
+  .feature:has(.full[open]) {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: "clip" "words" "full";
+    grid-template-rows: auto;
+  }
+  .feature .clip { margin-bottom: 0.6rem; }
+  .feature .full video { max-width: none; }
+}
+
+/* ---- Prototype: drawn marks, defined sections, the rabbit (not live) ----
+   The pen voice from the videos, on the page itself. DESIGN.md rule 10 gives
+   paper-craft to marketing; rule 11's doodle register: the rest state is the
+   finished drawing, and motion is only added on top. */
+
+.doodle {
+  width: 2.5rem;
+  height: 2.5rem;
+  flex: 0 0 auto;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+@keyframes draw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+
+/* Draws itself as it scrolls into view, where the browser can do that in
+   CSS. Everywhere else, and for reduced motion, it is simply drawn. */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .doodle path {
+      stroke-dasharray: 1;
+      animation: draw linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 30%;
+    }
+  }
+}
+
+/* Each section opens on a strip of ruled notebook paper. */
+.sect-head {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  max-width: 36rem;
+  margin: 0 0 1.25rem;
+  padding: 0.8rem 1.1rem 0.8rem 0.9rem;
+  border-radius: 3px 3px 10px 3px;
+  background-color: var(--sheet);
+  background-image: repeating-linear-gradient(180deg, transparent 0 11px, var(--ruled) 11px 12px);
+  box-shadow: 0 1px 2px rgba(28, 26, 23, 0.08), 0 4px 14px rgba(28, 26, 23, 0.05);
+}
+.sect-head h2,
+.group .sect-head h2 {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 1.35rem;
+  line-height: 1.25;
+}
+
+/* A hand-drawn hairline between sections. */
+.part {
+  position: relative;
+  margin-top: 3.25rem;
+  padding-top: 3rem;
+}
+.part::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 12px;
+  background: var(--ink-soft);
+  opacity: 0.45;
+  -webkit-mask: url(/art/hairline.svg) center / 100% 100% no-repeat;
+  mask: url(/art/hairline.svg) center / 100% 100% no-repeat;
+}
+.group.part > .sect-head { margin-top: 0; }
+
+/* The ink loop the videos draw around a word. */
+.ink-circle { position: relative; white-space: nowrap; margin: 0 0.18em 0 0.12em; }
+.ink-circle::after {
+  content: "";
+  position: absolute;
+  left: -0.3em;
+  right: -0.22em;
+  top: -0.06em;
+  bottom: -0.14em;
+  background: currentColor;
+  pointer-events: none;
+  -webkit-mask: url(/art/circle.svg) center / 100% 100% no-repeat;
+  mask: url(/art/circle.svg) center / 100% 100% no-repeat;
+}
+
+/* The rabbit: its own frames, unchanged, used as a mask so it takes the
+   page's ink in light mode and paper in dark. It breathes while it waits;
+   hover or focus the button and its ears go up, as when you press record. */
+.cta {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.6rem;
+}
+.rabbit {
+  display: inline-block;
+  width: 56px;
+  height: 76px;
+  flex: 0 0 auto;
+  background: var(--ink);
+  -webkit-mask: url(/art/rabbit-idle.png) 0 0 / 600% 100% no-repeat;
+  mask: url(/art/rabbit-idle.png) 0 0 / 600% 100% no-repeat;
+  animation: rabbit-idle 1.8s steps(6, jump-none) infinite;
+}
+.rabbit.still { animation: none; width: 38px; height: 52px; }
+
+.cta:has(.button:hover, .button:focus-visible) .rabbit {
+  animation: rabbit-lift 0.9s steps(11, jump-none) forwards,
+             rabbit-hold 1.6s steps(6, jump-none) 0.9s infinite;
+}
+
+@keyframes rabbit-idle {
+  from { -webkit-mask-position: 0% 0; mask-position: 0% 0; }
+  to   { -webkit-mask-position: 100% 0; mask-position: 100% 0; }
+}
+@keyframes rabbit-lift {
+  from { -webkit-mask-image: url(/art/rabbit-lift.png); mask-image: url(/art/rabbit-lift.png);
+         -webkit-mask-size: 1100% 100%; mask-size: 1100% 100%;
+         -webkit-mask-position: 0% 0; mask-position: 0% 0; }
+  to   { -webkit-mask-image: url(/art/rabbit-lift.png); mask-image: url(/art/rabbit-lift.png);
+         -webkit-mask-size: 1100% 100%; mask-size: 1100% 100%;
+         -webkit-mask-position: 100% 0; mask-position: 100% 0; }
+}
+@keyframes rabbit-hold {
+  from { -webkit-mask-image: url(/art/rabbit-hold.png); mask-image: url(/art/rabbit-hold.png);
+         -webkit-mask-size: 600% 100%; mask-size: 600% 100%;
+         -webkit-mask-position: 0% 0; mask-position: 0% 0; }
+  to   { -webkit-mask-image: url(/art/rabbit-hold.png); mask-image: url(/art/rabbit-hold.png);
+         -webkit-mask-size: 600% 100%; mask-size: 600% 100%;
+         -webkit-mask-position: 100% 0; mask-position: 100% 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rabbit { animation: none; }
+  .cta:has(.button:hover, .button:focus-visible) .rabbit {
+    animation: none;
+    -webkit-mask-image: url(/art/rabbit-hold.png); mask-image: url(/art/rabbit-hold.png);
+    -webkit-mask-size: 600% 100%; mask-size: 600% 100%;
+  }
+}
+
+.signoff { margin: 0 0 0.5rem; }
