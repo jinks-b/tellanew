@@ -578,12 +578,12 @@ main.wide :is(h1, h2, p, dl, figure, ul.points) { max-width: 36rem; }
 .group.part > .sect-head { margin-top: 0; }
 
 /* The ink loop the videos draw around a word. */
-.ink-circle { position: relative; white-space: nowrap; margin: 0 0.18em 0 0.12em; }
+.ink-circle { position: relative; white-space: nowrap; margin: 0 0.3em 0 0.18em; }
 .ink-circle::after {
   content: "";
   position: absolute;
   left: -0.3em;
-  right: -0.22em;
+  right: -0.34em;
   top: -0.06em;
   bottom: -0.14em;
   background: currentColor;
