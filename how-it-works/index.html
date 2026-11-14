@@ -533,5 +533,31 @@ these is under a minute, with sound.</p>
   <p>The voices in these videos are generated. The app screens are real.</p>
 </footer>
 
+<script>
+/* Tapping a feature's silent loop plays its full video with sound, the same
+   as "Watch with sound". The site's only script: no network, no storage. */
+document.querySelectorAll(".feature").forEach(function (feature) {
+  var clip = feature.querySelector(".clip");
+  var full = feature.querySelector("details.full");
+  var video = full && full.querySelector("video");
+  var title = feature.querySelector("h3");
+  if (!clip || !video) return;
+  clip.setAttribute("role", "button");
+  clip.setAttribute("tabindex", "0");
+  clip.setAttribute("aria-label", "Watch " + (title ? title.textContent : "this") + " with sound");
+  clip.style.cursor = "pointer";
+  function watch() {
+    full.open = true;
+    var playing = video.play();
+    if (playing && playing.catch) playing.catch(function () {});
+    full.scrollIntoView({ block: "nearest" });
+  }
+  clip.addEventListener("click", watch);
+  clip.addEventListener("keydown", function (e) {
+    if (e.key === "Enter" || e.key === " ") { e.preventDefault(); watch(); }
+  });
+  full.addEventListener("toggle", function () { if (!full.open) video.pause(); });
+});
+</script>
 </body>
 </html>
