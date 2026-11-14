@@ -535,18 +535,62 @@ these is under a minute, with sound.</p>
 
 <script>
 /* Tapping a feature's silent loop plays its full video with sound, the same
-   as "Watch with sound". The site's only script: no network, no storage. */
+   as "Watch with sound". The site's only script: no network, no storage.
+
+   A real iPhone decodes only a few videos at once, and this page has twenty
+   loops; with them all loaded, a full video never starts (the simulator has
+   no such limit). So a loop holds its video only while it is on screen, and
+   every loop lets go while a full video is open. Its poster stays in view. */
+var loops = Array.prototype.slice.call(document.querySelectorAll(".clip video"));
+var onScreen = new Set();
+var watching = 0;
+function hold(loop, on) {
+  var source = loop.querySelector("source");
+  if (on && !source.getAttribute("src")) {
+    source.setAttribute("src", source.dataset.src);
+    loop.load();
+  } else if (!on && source.getAttribute("src")) {
+    source.dataset.src = source.getAttribute("src");
+    source.removeAttribute("src");
+    loop.load();
+  }
+  if (on) {
+    var playing = loop.play();
+    if (playing && playing.catch) playing.catch(function () {});
+  }
+}
+function refresh() {
+  loops.forEach(function (loop) { hold(loop, !watching && onScreen.has(loop)); });
+}
+if ("IntersectionObserver" in window) {
+  loops.forEach(function (loop) { hold(loop, false); });
+  var seen = new IntersectionObserver(function (changes) {
+    changes.forEach(function (c) {
+      if (c.isIntersecting) onScreen.add(c.target); else onScreen.delete(c.target);
+    });
+    refresh();
+  }, { rootMargin: "200px 0px" });
+  loops.forEach(function (loop) { seen.observe(loop); });
+}
+
 document.querySelectorAll(".feature").forEach(function (feature) {
   var clip = feature.querySelector(".clip");
   var full = feature.querySelector("details.full");
   var video = full && full.querySelector("video");
   var title = feature.querySelector("h3");
-  if (!clip || !video) return;
+  if (!video) return;
+  full.addEventListener("toggle", function () {
+    watching += full.open ? 1 : -1;
+    if (!full.open) video.pause();
+    refresh();
+  });
+  if (!clip) return;
   clip.setAttribute("role", "button");
   clip.setAttribute("tabindex", "0");
   clip.setAttribute("aria-label", "Watch " + (title ? title.textContent : "this") + " with sound");
   clip.style.cursor = "pointer";
   function watch() {
+    loops.forEach(function (loop) { hold(loop, false); });
     full.open = true;
     var playing = video.play();
     if (playing && playing.catch) playing.catch(function () {});
@@ -556,7 +600,6 @@ document.querySelectorAll(".feature").forEach(function (feature) {
   clip.addEventListener("keydown", function (e) {
     if (e.key === "Enter" || e.key === " ") { e.preventDefault(); watch(); }
   });
-  full.addEventListener("toggle", function () { if (!full.open) video.pause(); });
 });
 </script>
 </body>
