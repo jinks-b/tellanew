@@ -559,6 +559,20 @@ document.querySelectorAll(".feature").forEach(function (feature) {
   var video = full && full.querySelector("video");
   var title = feature.querySelector("h3");
   if (!video) return;
+  /* Captions come on by themselves. The file is added only once the video is
+     playing, because a real iPhone stalls at 00:00 on a video that already
+     carries a <track> (tested on the phone, 2026-11-14). */
+  video.addEventListener("playing", function () {
+    if (video.querySelector("track")) return;
+    var track = document.createElement("track");
+    track.kind = "captions";
+    track.srclang = "en";
+    track.label = "English";
+    track.default = true;
+    track.src = video.querySelector("source").getAttribute("src").replace(/\.mp4$/, ".vtt");
+    video.appendChild(track);
+    track.track.mode = "showing";
+  });
   full.addEventListener("toggle", function () {
     watching += full.open ? 1 : -1;
     if (!full.open) video.pause();
